@@ -66,28 +66,74 @@ function applyCream(input: HTMLInputElement): void {
 }
 
 function applySyrup(input: HTMLInputElement): void {
-  // TODO: implement this function
+  const syrupDiv = document.querySelector<HTMLDivElement>(".syrup");
+  if (!syrupDiv) return;
+
+  const color = syrups[input.value];
+  if (!color) return;
+
+  syrupDiv.style.setProperty("--syrup-color", color);
 }
 
 function setupSyrupListeners(): void {
-  // TODO: implement this function
+  const radios = document.querySelectorAll<HTMLInputElement>(
+    'input[name="syrup"]',
+  );
+  radios.forEach((radio) => {
+    radio.addEventListener("change", () => applySyrup(radio));
+  });
+
+  const checked = document.querySelector<HTMLInputElement>(
+    'input[name="syrup"]:checked',
+  );
+  if (checked) applySyrup(checked);
 }
 
 setupSyrupListeners();
 
 function setupCreamListeners(): void {
-  // TODO: implement this function
+  const radios = document.querySelectorAll<HTMLInputElement>(
+    'input[name="cream"]',
+  );
+  radios.forEach((radio) => {
+    radio.addEventListener("change", () => applyCream(radio));
+  });
+
+  const checked = document.querySelector<HTMLInputElement>(
+    'input[name="cream"]:checked',
+  );
+  if (checked) applyCream(checked);
 }
 setupCreamListeners();
 
 function setupTemperatureListeners(): void {
-  // TODO: implement this function
+  const radios = document.querySelectorAll<HTMLInputElement>(
+    'input[name="temperature"]',
+  );
+  radios.forEach((radio) => {
+    radio.addEventListener("change", () => applyTemperature(radio));
+  });
+
+  const checked = document.querySelector<HTMLInputElement>(
+    'input[name="temperature"]:checked',
+  );
+  if (checked) applyTemperature(checked);
 }
 
 setupTemperatureListeners();
 
 function setupBaseListeners(): void {
-  // TODO: implement this function
+  const radios = document.querySelectorAll<HTMLInputElement>(
+    'input[name="base"]',
+  );
+  radios.forEach((radio) => {
+    radio.addEventListener("change", () => applyBase(radio));
+  });
+
+  const checked = document.querySelector<HTMLInputElement>(
+    'input[name="base"]:checked',
+  );
+  if (checked) applyBase(checked);
 }
 
 setupBaseListeners();
